@@ -1,0 +1,147 @@
+==== Post Controller====
+         $document = new DOMDocument();
+         $document->encoding = 'utf-8';
+         $document->loadHTML($validated['body']);
+         $imgs = $document->getElementsByTagName('img');
+
+         foreach ($imgs as $img) {
+             $modifiedSrc = 'http://127.0.0.1:8000/' . $img->getAttribute('src');
+             $img->setAttribute('src', $modifiedSrc);
+         }
+
+         $body = $document->getElementsByTagName('body');
+
+         if ($body && 0 < $body->length) {
+             $body = $body->item(0)->firstChild;
+         }
+
+         dd(utf8_decode($document->saveHTML($body)));
+
+         Post::create(['body' =>  utf8_decode($document->saveHTML($body)), 'user_id' => $validated['user_id']]);
+
+==== books ====
+<div class="card d-flex" style="width: 18rem;">
+    <div><iframe src="{{$books->url}}" class="card-img-top" width="640" height="480" ></iframe></div>
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div> --}}
+{{-- <div>
+    <div><iframe src="{{$books->url}}" class="card-img-top" width="640" height="480" ></iframe></div>
+    <div>mmnmnm</div>
+</div>
+
+====route====
+// Route::get('/new-lesson', [LessonController::class, 'form_createlesson'])->name('lesson.create.form')->middleware('admin');
+// Route::post('/create/lesson', [LessonController::class, 'createlesson'])->name('lesson.create');
+
+
+// Route::post('/create', [PostController::class, 'createPost'])->name('posts.create');
+// Route::get('/new-post', [PostController::class, 'form_createPost'])->name('posts.create.form')->middleware('admin');
+// Route::get('/load', [PostController::class, 'posts'])->name('load.post')->middleware('auth');
+// Route::get('/posts/delete/{id}', [PostController::class, 'destroy'])->name('post.delete')->middleware('admin');
+// Route::get('/posts/edit/{id}',   [PostController::class, 'edit'])->name('post.edit');
+// Route::post('/posts/update/{id}',  [PostController::class, 'update'])->name('post.update');
+// Route::post('/posts/image/upload', [PostController::class, 'uploadPostImage'])->name('posts.image.upload');
+
+// index
+
+<ul class="nav navbar-nav  justify-content-end">
+
+	    <li class="nav-item dropdown">
+
+        	<a class="text-decoration-none show" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+
+        	    <div class="litter" ><span>{{$litterAuth}}</span></div>
+
+        		    <ul class="dropdown-menu " >
+
+        			    <li><a class="dropdown-item nav-pro-mopile nav-text-litter {{ $currentRouteName === 'profile' ? 'active' : '' }}" href="{{ $profile }}">الملف الشخصي</a></li>
+
+        			    <li><a class="dropdown-item nav-pro-mopile nav-text-litter" href="#">Another action</a></li>
+
+        			    <li><hr class="dropdown-divider"></li>
+
+        			    <li><a class="dropdown-item nav-pro-mopile nav-text-litter" href="{{ $logout }}"> تسجيل الخروج </a></li>
+
+        			</ul>
+
+		</li>
+
+	</ul>
+
+
+
+
+            <div class="mb-3">
+                <label for="tayo" class="form-label">اضافه طايوهات :</label>
+                <input type="number" id="tayo" placeholder="اضافه طايوهات" class="form-control" name="tayo">
+
+            </div>
+
+
+    {{-- <section class="main"  >
+        <div>
+            <h2><br>مدارس احد عمود الدين</h2>
+            <p>اول موقع الكتروني لتنظيم خدمه مدارس الاحد</p>
+        </div>
+    </section> --}}
+
+
+
+
+
+                            <td>{{$user->phone}}</td>
+                        <td>{{$user->birthday}}</td>
+
+
+
+
+
+
+                                    <div class="mb-3">
+                <label for="address" class="form-label">عنوان المنزل:</label>
+                <input type="text"  class="form-control" id="address" name="address" placeholder="اكتب العنوان هنا:">
+            </div>
+            <div class="mb-3">
+                <label for="facebook" class="form-label">الفيسبوك:</label>
+                <input type="url"  class="form-control" id="facebook" name="facebook" placeholder="اكتب الفيسبوك هنا:">
+            </div>
+            <div class="mb-3">
+                <label for="nu_father" class="form-label">رقم ولى الامر:</label>
+                <input type="text"  class="form-control" id="nu_father" name="nu_father" placeholder="اكتب رقم ولى الامر هنا:">
+            </div>
+            <div class="mb-3">
+                <label for="our_father" class="form-label">اسم اب الاعتراف:</label>
+                <input type="text"  class="form-control" id="our_father" name="our_father" placeholder="اكتب اسم اب الاعتراف هنا:">
+            </div>
+
+
+                                {{-- @if($user->id != Auth()->id() && $user->role <= 1)
+                                <div class="btn-profile">
+                                    @endif
+                                </div> --}}
+                                {{-- <div><a href="{{ route('edit.profile') }}" class="btn btn-primary"><h4>اضافه المزيد من المعلومات</h4></a></div> --}}
+
+
+
+
+
+
+
+    transform: rotate(-5deg) scale(1.1);
+
+
+
+    // public function uploadPostImage(Request $request)
+    // {
+    //     $request->validate(['image' => ['required', 'image']]);
+    //     $file = $request->file('image');
+    //     $fileName = time() . '_' . Str::random(10) . '_' . $file->getClientOriginalExtension() . '.' . $file->guessClientExtension();
+    //     $path = Storage::putFileAs('public/posts-images', $file, $fileName);
+    //     $pathArray = explode('/', $path);
+    //     $pathArray[0] = "storage";
+    //     array_unshift($pathArray, env('APP_URL', 'http://127.0.0.1:8000'));
+    //     $path = implode('/', $pathArray);
+    //     return ['image' => $path];
+    // }

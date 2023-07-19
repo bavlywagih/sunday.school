@@ -1,0 +1,135 @@
+@media (max-width:991px) {
+    .nav-text-litter {
+        text-align: right;
+    }
+
+    .nav-pro-mopile {
+        font-size: 30px;
+    }
+
+    .navbar .navbar-collapse .nav-link,
+    .navbar ul.dropdown-menu .dropdown-item,
+    .nav-pro-mopile {
+        font-size: 19px !important;
+    }
+
+    .kash-page-prop {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .div-one-grade main div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .landing .text {
+        text-align: center;
+    }
+
+    .landing .text p {
+        margin: 10px auto;
+    }
+
+    .landing .image {
+        display: none;
+    }
+
+    .work-steps .image {
+        margin: 0 0 50px;
+    }
+
+    .work-steps .container {
+        flex-direction: column;
+    }
+    .div-round-tiym{
+        width: 95% !important;
+    }
+}
+
+@media (max-width:1023px) {
+    section {
+        padding: 80px 20px;
+    }
+
+    .book {
+        width: 92% !important;
+    }
+
+    .main h2 {
+        color: black;
+    }
+
+    .main p {
+        color: #000;
+    }
+
+    section {
+        padding: 80px 20px;
+    }
+
+    .main h2 {
+        color: black;
+    }
+
+    .main p {
+        color: #000;
+    }
+
+    .mobile-width {
+        width: 90% !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .landing .text h1 {
+        font-size: 28px;
+    }
+
+    .landing .text p {
+        font-size: 18px;
+    }
+
+    .work-steps .info .box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .work-steps .info .box img {
+        margin: 0 0 30px;
+    }
+
+    .kashkol p{
+        font-size: 30px;
+    }
+
+    .auth-form {
+        padding: 0 2rem;
+        width: 100%;
+    }
+    .kash-page-prop,
+    .div-one-grade main div
+    {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .div-create-kash,
+    .div-card-user,
+    .div-create-session,
+    .div-cont-attendance,
+    .table-user,
+    .card-create-info-div,
+    .mobile-width
+    {
+        width: 95% !important;
+    }
+
+    .label-create-information,
+    .div-create
+    {
+        padding-right: 26px !important;
+    }
+
+    .div-library-card {
+        display: block;
+    }
+
+}
